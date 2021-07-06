@@ -8,7 +8,7 @@ router.get("/", async (req, res) => {
       {},
       { sort: { createdAt: -1 } }
     ).exec();
-    res.status(200).json(lastWorkout);
+    res.status(200).json(lastWorkout ? lastWorkout : {});
   } catch (err) {
     res.status(500).send(err.message);
   }
