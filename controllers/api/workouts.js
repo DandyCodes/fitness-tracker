@@ -13,10 +13,8 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const workout = await db.Workout.create(req.body);
-    console.log(workout);
     res.json(workout);
   } catch (err) {
-    console.log(err);
     res.status(500).send(err.message);
   }
 });
@@ -25,13 +23,12 @@ router.put("/:id", async (req, res) => {
   try {
     const workout = await db.Workout.findOne({
       _id: req.params.id,
-    }).exec();
+    })
+      .populate("exercises")
+      .exec();
     const exercise = await db.Exercise.create(req.body);
-    console.log(req.body);
-    console.log(exercise);
     workout.exercises.push(exercise);
     await workout.save();
-    console.log(workout);
     res.status(200).json(workout);
   } catch (err) {
     res.status(500).send(err.message);
