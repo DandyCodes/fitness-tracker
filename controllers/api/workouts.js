@@ -14,4 +14,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.post("/", async (req, res) => {
+  try {
+    const workout = new db.Workout(req.body);
+    const result = await db.Workout.create(workout);
+    res.status(204).json(result);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err.message);
+  }
+});
+
 module.exports = router;
