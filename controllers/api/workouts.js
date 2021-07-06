@@ -25,9 +25,11 @@ router.put("/:id", async (req, res) => {
     const workout = await db.Workout.findOne({
       _id: req.params.id,
     }).exec();
-    const exercise = new db.Excercise(req.body);
+    console.log(workout);
+    const exercise = new db.Exercise(req.body);
     workout.exercises.push(exercise);
     await workout.save();
+    console.log(workout);
     res.status(200).json(workout);
   } catch (err) {
     res.status(500).send(err.message);
