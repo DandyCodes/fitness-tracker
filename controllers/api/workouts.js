@@ -28,9 +28,12 @@ router.put("/:id", async (req, res) => {
       .exec();
     const exercise = await db.Exercise.create(req.body);
     workout.exercises.push(exercise);
+    console.log(exercise);
+    workout.totalDuration += exercise.duration;
     await workout.save();
     res.status(200).json(workout);
   } catch (err) {
+    console.log(err);
     res.status(500).send(err.message);
   }
 });
