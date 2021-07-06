@@ -3,12 +3,8 @@ const db = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
-    const lastWorkout = await db.Workout.findOne(
-      {},
-      {},
-      { sort: { createdAt: -1 } }
-    ).exec();
-    res.status(200).json(lastWorkout ? lastWorkout : {});
+    const workouts = await db.Workout.find({}).exec();
+    res.status(200).json(workouts);
   } catch (err) {
     res.status(500).send(err.message);
   }
