@@ -3,7 +3,7 @@ const db = require("../../models");
 
 router.get("/", async (req, res) => {
   try {
-    const workouts = await db.Workout.find({}).exec();
+    const workouts = await db.Workout.find({}).populate("exercises").exec();
     res.status(200).json(workouts);
   } catch (err) {
     res.status(500).send(err.message);
@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const workout = await db.Workout.create(new db.Workout(req.body));
+    const workout = await db.Workout.create(req.body);
     res.json(workout);
   } catch (err) {
     console.log(err);
@@ -25,8 +25,9 @@ router.put("/:id", async (req, res) => {
     const workout = await db.Workout.findOne({
       _id: req.params.id,
     }).exec();
-    console.log(workout);
-    const exercise = new db.Exercise(req.body);
+    const exercise = await db.Exercise.create(req.body);
+    console.log(req.body);
+    console.log(exercise);
     workout.exercises.push(exercise);
     await workout.save();
     console.log(workout);

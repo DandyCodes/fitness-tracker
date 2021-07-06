@@ -6,6 +6,13 @@ const ExerciseSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  type: String,
+  name: String,
+  weight: Number,
+  sets: Number,
+  reps: Number,
+  distance: Number,
+  duration: Number,
 });
 
 const Exercise = mongoose.model("Exercise", ExerciseSchema);
