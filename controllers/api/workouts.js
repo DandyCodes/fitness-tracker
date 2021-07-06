@@ -16,9 +16,8 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    const workout = new db.Workout(req.body);
-    const result = await db.Workout.create(workout);
-    res.status(204).json(result);
+    const workout = await db.Workout.create(new db.Workout(req.body));
+    res.status(204).json(workout);
   } catch (err) {
     console.log(err);
     res.status(500).send(err.message);
