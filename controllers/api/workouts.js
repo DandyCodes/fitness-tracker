@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const workout = await db.Workout.create(req.body);
+    console.log(workout);
     res.json(workout);
   } catch (err) {
     console.log(err);
