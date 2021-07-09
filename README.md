@@ -15,7 +15,7 @@ A fitness tracker leveraging an express server and a MongoDB with Mongoose ODM. 
 
 ### Usage
 
-The deployed app can be accessed here:
+The deployed app can be accessed here: https://dandy-fitness-tracker.herokuapp.com/
 
 ### License
 
