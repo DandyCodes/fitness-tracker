@@ -51,7 +51,7 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    await db.Workout.updateOne(
+    const updateResult = await db.Workout.updateOne(
       { _id: req.params.id },
       {
         $push: {
@@ -59,7 +59,7 @@ router.put("/:id", async (req, res) => {
         },
       }
     );
-    res.json({});
+    res.json(updateResult);
   } catch (err) {
     console.log(err);
     res.status(500).send(err.message);
