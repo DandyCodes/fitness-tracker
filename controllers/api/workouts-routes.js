@@ -29,8 +29,9 @@ router.get("/range", async (req, res) => {
           },
         },
       },
-    ]).limit(7);
-    console.log(lastSevenWorkouts);
+    ])
+      .sort({ _id: "descending" })
+      .limit(7);
     res.status(200).json(lastSevenWorkouts);
   } catch (err) {
     console.log(err);
