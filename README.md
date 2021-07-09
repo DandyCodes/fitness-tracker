@@ -6,6 +6,10 @@
 
 A fitness tracker leveraging an express server and a MongoDB with Mongoose ODM. You can view, create and track daily workouts, logging multiple exercises on a given day. You can track the name, type, weight, sets, reps, and duration of your exercises. You can view the combined weight and total duration of the past seven workouts on the stats page.
 
+![a screenshot of the deployed website](./assets/img/screenshot-1.png)
+
+![a screenshot of the deployed website](./assets/img/screenshot-2.png)
+
 ## Table of Contents:
 
 - [Usage](#usage)
