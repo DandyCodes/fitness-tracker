@@ -14,7 +14,6 @@ router.get("/", async (req, res) => {
     ]);
     res.status(200).json(workouts);
   } catch (err) {
-    console.log(err);
     res.status(500).send(err.message);
   }
 });
@@ -34,7 +33,6 @@ router.get("/range", async (req, res) => {
       .limit(7);
     res.status(200).json(lastSevenWorkouts);
   } catch (err) {
-    console.log(err);
     res.status(500).send(err.message);
   }
 });
@@ -44,7 +42,6 @@ router.post("/", async (req, res) => {
     const workout = await db.Workout.create(req.body);
     res.json(workout);
   } catch (err) {
-    console.log(err);
     res.status(500).send(err.message);
   }
 });
@@ -61,7 +58,6 @@ router.put("/:id", async (req, res) => {
     );
     res.json(updateResult);
   } catch (err) {
-    console.log(err);
     res.status(500).send(err.message);
   }
 });
